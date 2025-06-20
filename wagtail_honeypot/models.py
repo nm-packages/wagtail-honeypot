@@ -3,6 +3,11 @@ import time
 from django.conf import settings
 from django.db import models
 from wagtail.contrib.forms.models import AbstractEmailForm
+from django.utils.translation import gettext_lazy as _
+
+def get_honeypot_default():
+    # Récupère la variable dans settings, ou False si absente
+    return getattr(settings, "HONEYPOT_ENABLED_DEFAULT", False)
 
 
 class HoneypotFormMixin(models.Model):
@@ -10,7 +15,7 @@ class HoneypotFormMixin(models.Model):
     Model to provide the honeypot field
     """
 
-    honeypot = models.BooleanField(default=False, verbose_name="Honeypot Enabled")
+    honeypot = models.BooleanField(default=get_honeypot_default, verbose_name=_("Honeypot enabled"))
 
     class Meta:
         abstract = True
