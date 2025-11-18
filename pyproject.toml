@@ -33,9 +33,9 @@ dependencies =[
 
 [project.optional-dependencies]
 development = [
-    "black==24.4.2",
-    "flake8==7.1.0",
-    "isort==5.13.2",
+    "black==25.11.0",
+    "flake8==7.3.0",
+    "isort==7.0.0",
     "django-upgrade",
     "pyupgrade",
 ]
