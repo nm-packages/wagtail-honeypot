@@ -7,7 +7,6 @@ from wagtail.contrib.forms.models import AbstractEmailForm
 
 
 def get_honeypot_default():
-    # Récupère la variable dans settings, ou False si absente
     return getattr(settings, "HONEYPOT_ENABLED_DEFAULT", False)
 
 
