@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- Add support for Python 3.13 and 3.14
+- Add support for Django 5.1 and 5.2
+- Add support for Wagtail 7.0, 7.1 and 7.2
+- Drop support for Python 3.9
+- Drop support for Django 5.0
+- Drop support for Wagtail 5.1 and 5.2
+- Update development dependencies
+
 ## [1.2.0] - 2024-07-13
 
 - Upgrade for Wagtail 6.1 & Django 5.0
