@@ -1,6 +1,6 @@
 [project]
 name = "wagtail-honeypot"
-version = "1.2.0"
+version = "1.2.1"
 description = "Add optional honeypot protection to your Wagtail forms."
 readme = "README.md"
 keywords = ["wagtail", "honeypot", "forms", "spam"]
