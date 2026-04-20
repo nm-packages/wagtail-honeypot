@@ -1101,7 +1101,7 @@ dev = [
     { name = "django", specifier = ">=5.2,<5.3" },
     { name = "django-upgrade" },
     { name = "pre-commit" },
-    { name = "ruff" },
+    { name = "ruff", specifier = "==0.15.11" },
     { name = "tox" },
     { name = "tox-gh-actions" },
     { name = "wagtail", specifier = ">=7.2,<7.3" },

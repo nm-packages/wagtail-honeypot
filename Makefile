@@ -6,7 +6,7 @@ help:
 	@printf "Available targets:\n"
 	@printf "  make sync        Sync the uv-managed development environment\n"
 	@printf "  make lint        Run Ruff lint checks\n"
-	@printf "  make format      Run Ruff formatting\n"
+	@printf "  make format      Run Ruff fixes and formatting\n"
 	@printf "  make run         Start the local Django development server\n"
 	@printf "  make mail        Start Mailhog for local email testing\n"
 	@printf "  make test        Run the default Django test suite with coverage\n"
@@ -21,6 +21,7 @@ lint:
 	uv run ruff check .
 
 format:
+	uv run ruff check . --fix
 	uv run ruff format .
 
 run:

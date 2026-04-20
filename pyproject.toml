@@ -37,7 +37,7 @@ dev = [
     "Django>=5.2,<5.3",
     "django-upgrade",
     "pre-commit",
-    "ruff",
+    "ruff==0.15.11",
     "tox",
     "tox-gh-actions",
     "Wagtail>=7.2,<7.3",
