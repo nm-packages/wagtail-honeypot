@@ -2,35 +2,86 @@
 
 ## Development Setup
 
-With a virtual environment activated, install the package in editable mode:
+Install [`uv`](https://docs.astral.sh/uv/) and use it as the default workflow for this project.
+
+Pin or install the default contributor Python version:
 
 ```bash
-pip install -e ".[development]"
+uv python install 3.12
 ```
+
+Create and sync the project environment:
+
+```bash
+uv sync
+```
+
+The default synced environment is intended to track the latest tested local stack for this repo: Python 3.12 with Django 5.2 and Wagtail 7.2. Use `tox` for the broader compatibility matrix.
 
 There is a [testapp](../tests/testapp/) provided that is a fully configured minimal setup using Wagtail v5.1+
 
 Setup the app:
 
 ```bash
-make migrate
+uv run python manage.py migrate
 ```
 
 Optional:
 
 ```bash
+uv run python manage.py createsuperuser
+```
+
+Or use:
+
+```bash
 make superuser
 ```
 
-This add an admin account with login details of Username: `admin` Password: `changeme`
+This adds an admin account with login details of Username: `admin` Password: `changeme`
 
 Run the development server:
 
 ```bash
-make run
+uv run python manage.py runserver 0:8000
 ```
 
 View the site at `http://localhost:8000` or add `/admin` to login.
+
+The `Makefile` targets also run through `uv`, so `make sync`, `make migrate`, `make run`, `make test`, and `make tox` remain valid shortcuts.
+
+## Common commands
+
+Run the default test suite:
+
+```bash
+uv run coverage run manage.py test
+uv run coverage report
+```
+
+Run the compatibility matrix:
+
+```bash
+uv run tox --skip-missing-interpreters
+```
+
+Run the configured formatting and lint hooks:
+
+```bash
+uv run pre-commit run --all-files
+```
+
+## Dependency management
+
+Use `uv` to change contributor dependencies and keep the lockfile in sync:
+
+```bash
+uv add --dev <package>
+uv lock
+uv sync
+```
+
+If you edit `pyproject.toml` manually, regenerate `uv.lock` and resync the environment before committing.
 
 ### A convenient SMTP server
 

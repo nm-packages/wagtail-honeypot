@@ -4,6 +4,12 @@
 
 This file guides coding agents working in this repository. Keep it operational and project-specific. Use `README.md` for package usage and `docs/developer.md` for local setup details; do not duplicate those walkthroughs here.
 
+## Workflow Tools
+
+- Use `uv` for contributor and agent workflows by default.
+- Use `uv sync` to create or refresh the local environment.
+- Use `uv run ...` for project commands instead of bare `python`, `pip`, or globally installed tooling unless the task explicitly requires it.
+
 ## Repo Map
 
 - `wagtail_honeypot/`: package behavior and public implementation.
@@ -37,7 +43,8 @@ This file guides coding agents working in this repository. Keep it operational a
 - For template tag or rendered field changes, update `tests/test_tags.py` with context and rendered HTML assertions.
 - Use `tests/testapp/` coverage when the change affects Wagtail page behavior or end-to-end form flow.
 - For translation or configuration changes, add focused assertions where practical.
-- Run `make test` for the default suite. Use `tox --skip-missing-interpreters` or `make tox` only when matrix coverage is relevant to the task.
+- Run `make test` or `uv run coverage run manage.py test` for the default suite.
+- Use `make tox` or `uv run tox --skip-missing-interpreters` only when matrix coverage is relevant to the task.
 
 ## Documentation Rules
 
