@@ -70,6 +70,46 @@ make lint
 make format
 ```
 
+## Release process
+
+PyPI releases are published from GitHub Actions after a GitHub Release is published.
+
+Prepare the release from `main`, not `release`:
+
+```bash
+git switch main
+git pull origin main
+```
+
+Before creating the release:
+
+- Update `project.version` in `pyproject.toml`
+- Update `CHANGELOG` for the release
+- Ensure the commit you intend to release is on `main`
+
+Create and push the release tag using the `vX.Y.Z` format:
+
+```bash
+git tag vX.Y.Z
+git push origin vX.Y.Z
+```
+
+Then publish the matching GitHub Release for that tag. The `Release` workflow will:
+
+- Verify the GitHub Release tag exactly matches `v{project.version}`
+- Verify the tagged commit is contained in `origin/main`
+- Build the sdist and wheel
+- Run `twine check`
+- Wait for approval on the GitHub `pypi` environment before uploading to PyPI
+
+Repository setup required for trusted publishing:
+
+- Add a GitHub environment named `pypi`
+- Protect that environment with the required approval rules for your release process
+- Register the PyPI trusted publisher for repository `nm-packages/wagtail-honeypot`, workflow `.github/workflows/release.yml`, and environment `pypi`
+
+After approving the `pypi` environment job, confirm both the source distribution and wheel appear on PyPI.
+
 ## Dependency management
 
 Use `uv` to change contributor dependencies and keep the lockfile in sync:

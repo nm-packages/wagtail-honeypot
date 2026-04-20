@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Update contributor and agent documentation for the new development workflow
 - Update the honeypot field documentation for the `aria-hidden="true"` accessibility attribute
 - Sync the Ruff pre-commit hook version with the locked Ruff release and correct the developer doc Wagtail baseline
+- Publish PyPI releases from GitHub Actions with trusted publishing and a protected `pypi` environment
 
 ## [1.2.1] - 2026-02-05
 
