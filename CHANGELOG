@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - Replace Black, isort, Flake8, and pyupgrade with Ruff for Python formatting and linting
 - Add Makefile help output plus dedicated `lint` and `format` targets
 - Update contributor and agent documentation for the new development workflow
+- Update the honeypot field documentation for the `aria-hidden="true"` accessibility attribute
 
 ## [1.2.1] - 2026-02-05
 

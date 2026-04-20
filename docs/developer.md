@@ -125,7 +125,7 @@ HONEYPOT_NAME_FIELD = "new-field-name"
 The honeypot text field would be rendered ...
 
 ```html
-<input type="text" name="new-field-name" id="new-field-name" data-new-field-name="" tabindex="-1" autocomplete="off">
+<input type="text" name="new-field-name" id="new-field-name" data-new-field-name="" tabindex="-1" autocomplete="off" aria-hidden="true">
 ```
 
 You can change the time field name and/or the time interval by adding the following to your settings.
@@ -144,7 +144,7 @@ If the form is submitted before the interval expires the submission is ignored.
 The honeypot time field would be rendered ...
 
 ```html
-<input type="hidden" name="time-field-name" id="time-field-name" data-time-field-name="" tabindex="-1" autocomplete="off">
+<input type="hidden" name="time-field-name" id="time-field-name" data-time-field-name="" tabindex="-1" autocomplete="off" aria-hidden="true">
 ```
 
 ### Custom process_form_submission method

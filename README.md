@@ -162,7 +162,7 @@ the field could be seen for a flash while the page loads -->
 
 The field should be visibly hidden and not be available to receive any value from a site visitor.
 
-> When rendered, the fields will have the HTML attributes `tabindex="-1" autocomplete="off"` to prevent a site visitor from using the tab key to move to the field and disable any autocomplete browser functions.
+> When rendered, the fields will have the HTML attributes `tabindex="-1" autocomplete="off" aria-hidden="true"` to keep them out of normal keyboard navigation, disable browser autocomplete, and hide them from assistive technology.
 
 ## Developer Documentation
 
