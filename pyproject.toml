@@ -31,16 +31,33 @@ dependencies =[
     "Wagtail>=6.3",
 ]
 
-[project.optional-dependencies]
-development = [
-    "black==25.11.0",
-    "flake8==7.3.0",
-    "isort==7.0.0",
+[dependency-groups]
+dev = [
+    "coverage",
+    "Django>=5.2,<5.3",
     "django-upgrade",
-    "pyupgrade",
+    "pre-commit",
+    "ruff==0.15.11",
+    "tox",
+    "tox-gh-actions",
+    "Wagtail>=7.2,<7.3",
 ]
 
 [project.urls]
 Repository = "https://github.com/wagtail-packages/wagtail-honeypot"
 Issues = "https://github.com/wagtail-packages/wagtail-honeypot/issues"
 Changelog = "https://github.com/wagtail-packages/wagtail-honeypot/blob/release/CHANGELOG"
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+exclude = [
+    "**/migrations/**",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E203"]
