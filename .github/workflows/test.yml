@@ -20,7 +20,7 @@ jobs:
           - python: "3.10"
             toxenv: py310-django42-wagtail63-sqlite
           - python: "3.14"
-            toxenv: py314-django52-wagtail72-sqlite
+            toxenv: py314-django60-wagtail73-sqlite
 
     steps:
       - name: Checkout repository

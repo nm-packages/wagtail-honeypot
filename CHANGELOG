@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- Add Wagtail 7.3 testing coverage and Django 6.0 coverage for that compatibility line
 - Document the `release` branch workflow and require merge requests to target `release`
+- Require agents to create a new branch from `release` before making repo-tracked changes
 - Add agent instructions to keep pull request titles and summaries current and update the changelog on every PR
 - Require review-driven code changes to be committed, pushed, and followed by an updated review reply
 - Adopt `uv` as the default contributor workflow and lock the local development environment

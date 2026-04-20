@@ -69,6 +69,8 @@ This file guides coding agents working in this repository. Keep it operational a
 
 - Treat `release` as the repository default branch.
 - Start all new work from `release`; it tracks the latest changes that are not yet released to PyPI.
+- Before making repo-tracked changes, create and switch to a new branch from `release`.
+- Do not make routine feature, fix, or documentation changes directly on `release` or `main` unless the task explicitly requires it.
 - Treat `main` as the release-preparation branch, not the starting point for routine feature or fix work.
 - Target merge requests at `release`.
 
