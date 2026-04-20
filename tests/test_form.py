@@ -8,7 +8,6 @@ from tests.testapp.models import FormField, FormPage
 
 
 class TestHoneypotFormDisabled(TestCase):
-
     def setUp(self):
         """
         Disable honeypot on FormPage
@@ -31,15 +30,9 @@ class TestHoneypotFormDisabled(TestCase):
         home_page.add_child(instance=form_page)
 
         # Add the form fields
-        FormField.objects.create(
-            page=form_page, label="Name", field_type="singleline", required=True
-        )
-        FormField.objects.create(
-            page=form_page, label="Email Address", field_type="email", required=True
-        )
-        FormField.objects.create(
-            page=form_page, label="Message", field_type="multiline", required=True
-        )
+        FormField.objects.create(page=form_page, label="Name", field_type="singleline", required=True)
+        FormField.objects.create(page=form_page, label="Email Address", field_type="email", required=True)
+        FormField.objects.create(page=form_page, label="Message", field_type="multiline", required=True)
 
         form_page.save_revision().publish()
 
@@ -63,7 +56,6 @@ class TestHoneypotFormDisabled(TestCase):
 
 
 class TestHoneypotFormEnabled(TestCase):
-
     def setUp(self):
         """
         Enable honeypot on FormPage
@@ -86,15 +78,9 @@ class TestHoneypotFormEnabled(TestCase):
         home_page.add_child(instance=form_page)
 
         # Add the form fields
-        FormField.objects.create(
-            page=form_page, label="Name", field_type="singleline", required=True
-        )
-        FormField.objects.create(
-            page=form_page, label="Email Address", field_type="email", required=True
-        )
-        FormField.objects.create(
-            page=form_page, label="Message", field_type="multiline", required=True
-        )
+        FormField.objects.create(page=form_page, label="Name", field_type="singleline", required=True)
+        FormField.objects.create(page=form_page, label="Email Address", field_type="email", required=True)
+        FormField.objects.create(page=form_page, label="Message", field_type="multiline", required=True)
 
         form_page.save_revision().publish()
 

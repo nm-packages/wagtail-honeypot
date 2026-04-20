@@ -39,14 +39,10 @@ class TestHoneypotTemplateTags(TestCase):
 
         soup = bs4(template.render(context), "html.parser")
 
-        input_text = soup.find(
-            "input", {"id": "whf_name", "name": "whf_name", "type": "text"}
-        )
+        input_text = soup.find("input", {"id": "whf_name", "name": "whf_name", "type": "text"})
         self.assertIsNotNone(input_text)
 
-        input_time = soup.find(
-            "input", {"id": "whf_time", "name": "whf_time", "type": "hidden"}
-        )
+        input_time = soup.find("input", {"id": "whf_time", "name": "whf_time", "type": "hidden"})
         self.assertIsNotNone(input_time)
 
     @override_settings(HONEYPOT_NAME_FIELD="foo", HONEYPOT_TIME_FIELD="bar")

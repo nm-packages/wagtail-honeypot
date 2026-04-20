@@ -9,6 +9,7 @@ This file guides coding agents working in this repository. Keep it operational a
 - Use `uv` for contributor and agent workflows by default.
 - Use `uv sync` to create or refresh the local environment.
 - Use `uv run ...` for project commands instead of bare `python`, `pip`, or globally installed tooling unless the task explicitly requires it.
+- Use Ruff for Python formatting and linting by default.
 
 ## Repo Map
 
@@ -43,6 +44,8 @@ This file guides coding agents working in this repository. Keep it operational a
 - For template tag or rendered field changes, update `tests/test_tags.py` with context and rendered HTML assertions.
 - Use `tests/testapp/` coverage when the change affects Wagtail page behavior or end-to-end form flow.
 - For translation or configuration changes, add focused assertions where practical.
+- Run `make lint` or `uv run ruff check .` for Python style checks.
+- Run `make format` or `uv run ruff format .` when updating Python formatting.
 - Run `make test` or `uv run coverage run manage.py test` for the default suite.
 - Use `make tox` or `uv run tox --skip-missing-interpreters` only when matrix coverage is relevant to the task.
 

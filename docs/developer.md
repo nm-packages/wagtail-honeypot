@@ -71,6 +71,20 @@ Run the configured formatting and lint hooks:
 uv run pre-commit run --all-files
 ```
 
+Run Ruff directly:
+
+```bash
+uv run ruff check .
+uv run ruff format .
+```
+
+Or use the Makefile shortcuts:
+
+```bash
+make lint
+make format
+```
+
 ## Dependency management
 
 Use `uv` to change contributor dependencies and keep the lockfile in sync:
