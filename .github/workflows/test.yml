@@ -33,13 +33,9 @@ jobs:
           python-version: ${{ matrix.python }}
           enable-cache: true
 
-      - name: Sync dependencies
-        id: sync-dependencies
-        run: uv sync --locked
-
       - name: Test with tox
         id: test-with-tox
-        run: uv run tox -e ${{ matrix.toxenv }}
+        run: uvx --with tox-gh-actions tox -e ${{ matrix.toxenv }}
 
   test-sqlite-main:
     if: github.base_ref == 'main'
@@ -60,13 +56,9 @@ jobs:
           python-version: ${{ matrix.python }}
           enable-cache: true
 
-      - name: Sync dependencies
-        id: sync-dependencies
-        run: uv sync --locked
-
       - name: Test with tox
         id: test-with-tox
-        run: uv run tox
+        run: uvx --with tox-gh-actions tox
         env:
           DATABASE: ${{ matrix.database }}
 
@@ -100,13 +92,9 @@ jobs:
           python-version: ${{ matrix.python }}
           enable-cache: true
 
-      - name: Sync dependencies
-        id: sync-dependencies
-        run: uv sync --locked
-
       - name: Test with tox
         id: test-with-tox
-        run: uv run tox
+        run: uvx --with tox-gh-actions tox
         env:
           DB_NAME: postgres
           DB_USER: postgres
@@ -148,13 +136,9 @@ jobs:
           python-version: ${{ matrix.python }}
           enable-cache: true
 
-      - name: Sync dependencies
-        id: sync-dependencies
-        run: uv sync --locked
-
       - name: Test with tox
         id: test-with-tox
-        run: uv run tox
+        run: uvx --with tox-gh-actions tox
         env:
           DB_NAME: mysql
           DB_USER: root

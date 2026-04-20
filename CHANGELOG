@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## Unreleased
 
 - Add Wagtail 7.3 testing coverage and Django 6.0 coverage for that compatibility line
+- Run CI tox jobs via `uvx` so Python 3.10 and 3.11 jobs do not require the Python 3.12+ dev environment
 - Document the `release` branch workflow and require merge requests to target `release`
 - Require agents to create a new branch from `release` before making repo-tracked changes
 - Add agent instructions to keep pull request titles and summaries current and update the changelog on every PR
