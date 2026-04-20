@@ -53,7 +53,15 @@ This file guides coding agents working in this repository. Keep it operational a
 
 - Update `README.md` when package usage, settings, or integration steps change for users.
 - Update `docs/developer.md` when local development workflow changes.
+- Update `CHANGELOG` under `## Unreleased` for every PR. Keep entries short, flat, and user or contributor facing.
 - Keep `AGENTS.md` concise and directive; do not turn it into a duplicate contributor guide.
+
+## PR Readiness
+
+- Keep the pull request body or summary aligned with the current branch scope.
+- Update the PR description whenever behavior, tooling, documentation, or test coverage changes materially from the current summary.
+- The maintained PR body should cover the behavior change, docs or tooling updates, and verification performed.
+- Treat the PR summary and `CHANGELOG` entry as required closing steps before the branch is ready.
 
 ## Branch Workflow
 
@@ -64,6 +72,6 @@ This file guides coding agents working in this repository. Keep it operational a
 
 ## Change Boundaries
 
-- Do not change version metadata, `CHANGELOG`, supported-version claims, or migrations unless the task requires it.
+- Do not change version metadata, supported-version claims, or migrations unless the task requires it.
 - Keep commit scope narrow and tied to one behavior change.
 - Prefer minimal edits that preserve the package's existing API and documented behavior.
