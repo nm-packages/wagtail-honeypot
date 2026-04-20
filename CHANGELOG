@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Add Makefile help output plus dedicated `lint` and `format` targets
 - Update contributor and agent documentation for the new development workflow
 - Update the honeypot field documentation for the `aria-hidden="true"` accessibility attribute
+- Sync the Ruff pre-commit hook version with the locked Ruff release and correct the developer doc Wagtail baseline
 
 ## [1.2.1] - 2026-02-05
 

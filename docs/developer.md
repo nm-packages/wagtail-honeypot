@@ -18,7 +18,7 @@ uv sync
 
 The default synced environment is intended to track the latest tested local stack for this repo: Python 3.12 with Django 5.2 and Wagtail 7.2. Use `tox` for the broader compatibility matrix.
 
-There is a [testapp](../tests/testapp/) provided that is a fully configured minimal setup using Wagtail v5.1+
+There is a [testapp](../tests/testapp/) provided that is a fully configured minimal setup using Wagtail v6.3+
 
 Setup the app:
 

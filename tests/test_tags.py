@@ -10,6 +10,14 @@ class TestHoneypotTemplateTags(TestCase):
     Test the honeypot template tags
     """
 
+    def assert_honeypot_input(self, soup, *, field_id, field_name, field_type):
+        input_field = soup.find("input", {"id": field_id, "name": field_name, "type": field_type})
+        self.assertIsNotNone(input_field)
+        self.assertEqual(input_field.get("tabindex"), "-1")
+        self.assertEqual(input_field.get("autocomplete"), "off")
+        self.assertEqual(input_field.get("aria-hidden"), "true")
+        return input_field
+
     def test_honeypot_template_tag_context_enabled(self):
         """
         Test that the honeypot template tag returns the correct data
@@ -39,11 +47,8 @@ class TestHoneypotTemplateTags(TestCase):
 
         soup = bs4(template.render(context), "html.parser")
 
-        input_text = soup.find("input", {"id": "whf_name", "name": "whf_name", "type": "text"})
-        self.assertIsNotNone(input_text)
-
-        input_time = soup.find("input", {"id": "whf_time", "name": "whf_time", "type": "hidden"})
-        self.assertIsNotNone(input_time)
+        self.assert_honeypot_input(soup, field_id="whf_name", field_name="whf_name", field_type="text")
+        self.assert_honeypot_input(soup, field_id="whf_time", field_name="whf_time", field_type="hidden")
 
     @override_settings(HONEYPOT_NAME_FIELD="foo", HONEYPOT_TIME_FIELD="bar")
     def test_honeypot_tags_override_field_names(self):
@@ -56,8 +61,5 @@ class TestHoneypotTemplateTags(TestCase):
 
         soup = bs4(template.render(context), "html.parser")
 
-        input_text = soup.find("input", {"id": "foo", "name": "foo", "type": "text"})
-        self.assertIsNotNone(input_text)
-
-        input_time = soup.find("input", {"id": "bar", "name": "bar", "type": "hidden"})
-        self.assertIsNotNone(input_time)
+        self.assert_honeypot_input(soup, field_id="foo", field_name="foo", field_type="text")
+        self.assert_honeypot_input(soup, field_id="bar", field_name="bar", field_type="hidden")
