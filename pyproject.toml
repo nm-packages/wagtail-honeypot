@@ -22,6 +22,7 @@ classifiers = [
     "Framework :: Django :: 4.2",
     "Framework :: Django :: 5.1",
     "Framework :: Django :: 5.2",
+    "Framework :: Django :: 6.0",
     "Framework :: Wagtail",
     "Framework :: Wagtail :: 6",
     "Framework :: Wagtail :: 7",
@@ -34,13 +35,13 @@ dependencies =[
 [dependency-groups]
 dev = [
     "coverage",
-    "Django>=5.2,<5.3",
+    "Django>=6.0,<6.1",
     "django-upgrade",
     "pre-commit",
     "ruff==0.15.11",
     "tox",
     "tox-gh-actions",
-    "Wagtail>=7.2,<7.3",
+    "Wagtail>=7.3,<7.4",
 ]
 
 [project.urls]
@@ -50,6 +51,9 @@ Changelog = "https://github.com/wagtail-packages/wagtail-honeypot/blob/release/C
 
 [tool.uv]
 default-groups = ["dev"]
+
+[tool.uv.dependency-groups]
+dev = { requires-python = ">=3.12" }
 
 [tool.ruff]
 line-length = 120
