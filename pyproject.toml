@@ -55,7 +55,7 @@ default-groups = ["dev"]
 line-length = 120
 target-version = "py310"
 exclude = [
-    "*/migrations/*",
+    "**/migrations/**",
 ]
 
 [tool.ruff.lint]
