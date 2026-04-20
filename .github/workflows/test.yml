@@ -11,7 +11,38 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test-sqlite:
+  test-sqlite-release:
+    if: github.base_ref == 'release'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - python: "3.10"
+            toxenv: py310-django42-wagtail63-sqlite
+          - python: "3.14"
+            toxenv: py314-django52-wagtail72-sqlite
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up uv
+        id: setup-uv
+        uses: astral-sh/setup-uv@v8.1.0
+        with:
+          python-version: ${{ matrix.python }}
+          enable-cache: true
+
+      - name: Sync dependencies
+        id: sync-dependencies
+        run: uv sync --locked
+
+      - name: Test with tox
+        id: test-with-tox
+        run: uv run tox -e ${{ matrix.toxenv }}
+
+  test-sqlite-main:
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -40,6 +71,7 @@ jobs:
           DATABASE: ${{ matrix.database }}
 
   test-postgres:
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -85,6 +117,7 @@ jobs:
 
 
   test-mysql:
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     strategy:
       matrix:

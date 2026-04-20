@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - Add agent instructions to keep pull request titles and summaries current and update the changelog on every PR
 - Require review-driven code changes to be committed, pushed, and followed by an updated review reply
 - Adopt `uv` as the default contributor workflow and lock the local development environment
+- Run a reduced SQLite tox subset for `release` pull requests while keeping the full matrix for `main`
 - Replace Black, isort, Flake8, and pyupgrade with Ruff for Python formatting and linting
 - Add Makefile help output plus dedicated `lint` and `format` targets
 - Update contributor and agent documentation for the new development workflow
