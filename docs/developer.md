@@ -8,11 +8,6 @@ Pin or install the default contributor Python version:
 
 ```bash
 uv python install 3.12
-```
-
-Create and sync the project environment:
-
-```bash
 uv sync
 ```
 
@@ -24,17 +19,7 @@ Setup the app:
 
 ```bash
 uv run python manage.py migrate
-```
-
-Optional:
-
-```bash
 uv run python manage.py createsuperuser
-```
-
-Or use:
-
-```bash
 make superuser
 ```
 
