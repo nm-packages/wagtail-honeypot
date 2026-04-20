@@ -58,10 +58,11 @@ This file guides coding agents working in this repository. Keep it operational a
 
 ## PR Readiness
 
-- Keep the pull request body or summary aligned with the current branch scope.
+- Keep the pull request title and body aligned with the current branch scope.
+- Update the PR title whenever the branch scope changes materially and the current title no longer describes the work accurately.
 - Update the PR description whenever behavior, tooling, documentation, or test coverage changes materially from the current summary.
 - The maintained PR body should cover the behavior change, docs or tooling updates, and verification performed.
-- Treat the PR summary and `CHANGELOG` entry as required closing steps before the branch is ready.
+- Treat the PR title, PR summary, and `CHANGELOG` entry as required closing steps before the branch is ready.
 
 ## Branch Workflow
 
