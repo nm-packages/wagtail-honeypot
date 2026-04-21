@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This file guides coding agents working in this repository. Keep it operational and project-specific. Use `README.md` for package usage and `docs/developer.md` for local setup details; do not duplicate those walkthroughs here.
+This file guides coding agents working in this repository. Keep it operational and project-specific. Use `README.md` for package usage, `docs/developer.md` for local setup details, and `docs/contributing/releasing.md` for maintainer release steps; do not duplicate those walkthroughs here.
 
 ## Workflow Tools
 
@@ -53,6 +53,7 @@ This file guides coding agents working in this repository. Keep it operational a
 
 - Update `README.md` when package usage, settings, or integration steps change for users.
 - Update `docs/developer.md` when local development workflow changes.
+- Use `docs/contributing/releasing.md` as the canonical maintainer release runbook.
 - Update `CHANGELOG` under `## Unreleased` for every PR. Keep entries short, flat, and user or contributor facing.
 - Keep `AGENTS.md` concise and directive; do not turn it into a duplicate contributor guide.
 
@@ -72,10 +73,10 @@ This file guides coding agents working in this repository. Keep it operational a
 - Before making repo-tracked changes, create and switch to a new branch from `release`.
 - Do not make routine feature, fix, or documentation changes directly on `release` or `main` unless the task explicitly requires it.
 - Treat `main` as the release-preparation branch, not the starting point for routine feature or fix work.
-- Target merge requests at `release`.
+- Target routine merge requests at `release`; follow `docs/contributing/releasing.md` for release-prep work that lands on `main`.
 
 ## Change Boundaries
 
-- Do not change version metadata, supported-version claims, or migrations unless the task requires it.
+- Do not change version metadata, release tags, release changelog sections, supported-version claims, or migrations unless the task explicitly requires release-prep or compatibility work.
 - Keep commit scope narrow and tied to one behavior change.
 - Prefer minimal edits that preserve the package's existing API and documented behavior.
