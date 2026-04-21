@@ -2,35 +2,87 @@
 
 ## Development Setup
 
-With a virtual environment activated, install the package in editable mode:
+Install [`uv`](https://docs.astral.sh/uv/) and use it as the default workflow for this project.
+
+Pin or install the default contributor Python version:
 
 ```bash
-pip install -e ".[development]"
+uv python install 3.12
+uv sync
 ```
 
-There is a [testapp](../tests/testapp/) provided that is a fully configured minimal setup using Wagtail v5.1+
+The default synced environment is intended to track the latest tested local stack for this repo: Python 3.12 with Django 6.0 and Wagtail 7.3. Use `tox` for the broader compatibility matrix.
+
+There is a [testapp](../tests/testapp/) provided that is a fully configured minimal setup using Wagtail v6.3+
 
 Setup the app:
 
 ```bash
-make migrate
-```
-
-Optional:
-
-```bash
+uv run python manage.py migrate
+uv run python manage.py createsuperuser
 make superuser
 ```
 
-This add an admin account with login details of Username: `admin` Password: `changeme`
+This adds an admin account with login details of Username: `admin` Password: `changeme`
 
 Run the development server:
 
 ```bash
-make run
+uv run python manage.py runserver 0:8000
 ```
 
 View the site at `http://localhost:8000` or add `/admin` to login.
+
+The `Makefile` targets also run through `uv`, so `make sync`, `make migrate`, `make run`, `make test`, and `make tox` remain valid shortcuts.
+
+## Common commands
+
+Run the default test suite:
+
+```bash
+uv run coverage run manage.py test
+uv run coverage report
+```
+
+Run the compatibility matrix:
+
+```bash
+uv run tox --skip-missing-interpreters
+```
+
+Run the configured formatting and lint hooks:
+
+```bash
+uv run pre-commit run --all-files
+```
+
+Run Ruff directly:
+
+```bash
+uv run ruff check .
+uv run ruff format .
+```
+
+Or use the Makefile shortcuts:
+
+```bash
+make lint
+make format
+```
+
+See [Releasing wagtail-honeypot](contributing/releasing.md) for the maintainer release runbook.
+
+## Dependency management
+
+Use `uv` to change contributor dependencies and keep the lockfile in sync:
+
+```bash
+uv add --dev <package>
+uv lock
+uv sync
+```
+
+If you edit `pyproject.toml` manually, regenerate `uv.lock` and resync the environment before committing.
 
 ### A convenient SMTP server
 
@@ -60,7 +112,7 @@ HONEYPOT_NAME_FIELD = "new-field-name"
 The honeypot text field would be rendered ...
 
 ```html
-<input type="text" name="new-field-name" id="new-field-name" data-new-field-name="" tabindex="-1" autocomplete="off">
+<input type="text" name="new-field-name" id="new-field-name" data-new-field-name="" tabindex="-1" autocomplete="off" aria-hidden="true">
 ```
 
 You can change the time field name and/or the time interval by adding the following to your settings.
@@ -79,7 +131,7 @@ If the form is submitted before the interval expires the submission is ignored.
 The honeypot time field would be rendered ...
 
 ```html
-<input type="hidden" name="time-field-name" id="time-field-name" data-time-field-name="" tabindex="-1" autocomplete="off">
+<input type="hidden" name="time-field-name" id="time-field-name" data-time-field-name="" tabindex="-1" autocomplete="off" aria-hidden="true">
 ```
 
 ### Custom process_form_submission method

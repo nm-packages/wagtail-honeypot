@@ -1,4 +1,4 @@
-import time
+from unittest.mock import patch
 
 from django.test import TestCase
 
@@ -13,16 +13,19 @@ class TestHoneypotMethods(TestCase):
     def setUp(self):
         self.interval = 3  # seconds
         self.form = FormPage()
-        self.form_render_time = int(str(time.time()).split(".")[0])
+        self.current_time = 1_700_000_000
+        self.form_render_time = self.current_time
 
-    def test_instant_submit(self):
-        self.assertFalse(self.form.time_diff(self.form_render_time, self.interval))
+    @patch("wagtail_honeypot.models.time.time")
+    def test_time_diff_thresholds(self, mock_time):
+        mock_time.return_value = self.current_time
+        cases = [
+            ("instant submit", self.form_render_time, False),
+            ("equal to interval", self.form_render_time - self.interval, False),
+            ("greater than interval", self.form_render_time - (self.interval + 1), True),
+            ("much greater than interval", self.form_render_time - 10, True),
+        ]
 
-    def test_delayed_submit_interval(self):
-        self.assertFalse(self.form.time_diff(self.form_render_time - 3, self.interval))
-
-    def test_delayed_submit_long_interval(self):
-        self.assertTrue(self.form.time_diff(self.form_render_time - 4, self.interval))
-
-    def test_delayed_submit_longer_interval(self):
-        self.assertTrue(self.form.time_diff(self.form_render_time - 10, self.interval))
+        for label, submitted_time, expected in cases:
+            with self.subTest(label=label):
+                self.assertEqual(self.form.time_diff(submitted_time, self.interval), expected)

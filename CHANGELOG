@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [1.3.0] - 2026-04-21
+
+- Add Wagtail 7.3 testing coverage and Django 6.0 coverage for that compatibility line
+- Run CI tox jobs via `uvx` so Python 3.10 and 3.11 jobs do not require the Python 3.12+ dev environment
+- Document the `release` branch workflow and require merge requests to target `release`
+- Require agents to create a new branch from `release` before making repo-tracked changes
+- Add agent instructions to keep pull request titles and summaries current and update the changelog on every PR
+- Require review-driven code changes to be committed, pushed, and followed by an updated review reply
+- Adopt `uv` as the default contributor workflow and lock the local development environment
+- Run a reduced SQLite tox subset for `release` pull requests while keeping the full matrix for `main`
+- Replace Black, isort, Flake8, and pyupgrade with Ruff for Python formatting and linting
+- Add Makefile help output plus dedicated `lint` and `format` targets
+- Update contributor and agent documentation for the new development workflow
+- Update the honeypot field documentation for the `aria-hidden="true"` accessibility attribute
+- Sync the Ruff pre-commit hook version with the locked Ruff release and correct the developer doc Wagtail baseline
+- Publish PyPI releases from GitHub Actions with PyPI Trusted Publishing
+
 ## [1.2.1] - 2026-02-05
 
 - Add locale support
