@@ -3,7 +3,6 @@ name: Tests
 on:
   pull_request:
     branches:
-      - release
       - main
 
 concurrency:
@@ -11,34 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test-sqlite-release:
-    if: github.base_ref == 'release'
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - python: "3.10"
-            toxenv: py310-django42-wagtail63-sqlite
-          - python: "3.14"
-            toxenv: py314-django60-wagtail73-sqlite
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up uv
-        id: setup-uv
-        uses: astral-sh/setup-uv@v8.1.0
-        with:
-          python-version: ${{ matrix.python }}
-          enable-cache: true
-
-      - name: Test with tox
-        id: test-with-tox
-        run: uvx --with tox-gh-actions tox -e ${{ matrix.toxenv }}
-
-  test-sqlite-main:
-    if: github.base_ref == 'main'
+  test-sqlite:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -63,7 +35,6 @@ jobs:
           DATABASE: ${{ matrix.database }}
 
   test-postgres:
-    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -103,9 +74,7 @@ jobs:
           DB_PORT: 5432
           DATABASE: ${{ matrix.database }}
 
-
   test-mysql:
-    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     strategy:
       matrix:

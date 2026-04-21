@@ -47,7 +47,7 @@ dev = [
 [project.urls]
 Repository = "https://github.com/wagtail-packages/wagtail-honeypot"
 Issues = "https://github.com/wagtail-packages/wagtail-honeypot/issues"
-Changelog = "https://github.com/wagtail-packages/wagtail-honeypot/blob/release/CHANGELOG"
+Changelog = "https://github.com/wagtail-packages/wagtail-honeypot/blob/main/CHANGELOG"
 
 [tool.uv]
 default-groups = ["dev"]
