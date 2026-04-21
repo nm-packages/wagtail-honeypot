@@ -68,12 +68,11 @@ This file guides coding agents working in this repository. Keep it operational a
 
 ## Branch Workflow
 
-- Treat `release` as the repository default branch.
-- Start all new work from `release`; it tracks the latest changes that are not yet released to PyPI.
-- Before making repo-tracked changes, create and switch to a new branch from `release`.
-- Do not make routine feature, fix, or documentation changes directly on `release` or `main` unless the task explicitly requires it.
-- Treat `main` as the release-preparation branch, not the starting point for routine feature or fix work.
-- Target routine merge requests at `release`; follow `docs/contributing/releasing.md` for release-prep work that lands on `main`.
+- Treat `main` as the repository default branch, pull request target, and release/tagging branch.
+- Start all new work from `main`.
+- Before making repo-tracked changes, create and switch to a new branch from `main`.
+- Do not make routine feature, fix, or documentation changes directly on `main` unless the task explicitly requires it.
+- Target routine pull requests at `main`.
 
 ## Change Boundaries
 
