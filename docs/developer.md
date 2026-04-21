@@ -70,6 +70,8 @@ make lint
 make format
 ```
 
+See [Releasing wagtail-honeypot](contributing/releasing.md) for the maintainer release runbook.
+
 ## Dependency management
 
 Use `uv` to change contributor dependencies and keep the lockfile in sync:
